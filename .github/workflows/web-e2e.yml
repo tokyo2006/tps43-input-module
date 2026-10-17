@@ -65,7 +65,7 @@ jobs:
       - name: Install dependencies
         working-directory: web
         run: |
-          npm ci
+          npm install
           npx playwright install --with-deps chromium
       - name: Download DUT ELF
         uses: actions/download-artifact@v4
