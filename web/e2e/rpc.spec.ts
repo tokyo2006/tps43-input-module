@@ -37,9 +37,7 @@ test("the web UI connects to real firmware and round-trips the tps43 RPC", async
 
   // The firmware registered this module's custom subsystem, so the tps43
   // settings panel rendered its sections (the app shows a warning otherwise).
-  await expect(
-    page.getByRole("button", { name: "Gestures" })
-  ).toBeVisible();
+  await expect(page.getByRole("button", { name: "Gestures" })).toBeVisible();
   await expect(page.getByRole("button", { name: "Axes" })).toBeVisible();
 
   // The module's own RPC, end to end: toggle "Flip X" and confirm the UI
