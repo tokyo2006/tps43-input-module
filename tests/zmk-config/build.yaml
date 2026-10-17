@@ -1,0 +1,30 @@
+include:
+  - artifact: tps43_board_feature_disabled
+    board: xiao_ble//zmk
+    shield: tester_xiao
+
+  - artifact: tps43_board_with_rpc
+    board: xiao_ble//zmk
+    shield: tester_xiao
+    cmake-args: -DCONFIG_ZMK_STUDIO=y -DCONFIG_ZMK_TPS43=y -DCONFIG_ZMK_TPS43_STUDIO_RPC=y
+    snippet: studio-rpc-usb-uart
+
+  - artifact: tps43_board_without_rpc
+    board: xiao_ble//zmk
+    shield: tester_xiao
+    cmake-args: -DCONFIG_ZMK_TPS43=y
+
+  # DUT for the web UI end-to-end test (see web/e2e/): the same real
+  # studio-rpc-usb-uart image as tps43_board_with_rpc, but with Studio locking
+  # OFF (an emulator has no key to press &studio_unlock with).
+  - artifact: web_e2e
+    board: xiao_ble//zmk
+    shield: tester_xiao
+    cmake-args: -DCONFIG_ZMK_STUDIO=y -DCONFIG_ZMK_STUDIO_LOCKING=n -DCONFIG_ZMK_TPS43=y -DCONFIG_ZMK_TPS43_STUDIO_RPC=y
+    snippet: studio-rpc-usb-uart
+
+  - artifact: custom_settings_board
+    board: xiao_ble//zmk
+    shield: tester_xiao
+    cmake-args: -DCONFIG_ZMK_STUDIO=y -DCONFIG_ZMK_TPS43=y -DCONFIG_ZMK_TPS43_STUDIO_RPC=y -DCONFIG_ZMK_CUSTOM_SETTINGS=y -DCONFIG_ZMK_CUSTOM_SETTINGS_STUDIO_RPC=y
+    snippet: studio-rpc-usb-uart

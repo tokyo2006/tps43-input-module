@@ -1,0 +1,9 @@
+build/
+dependencies
+__pycache__/
+.vscode/*
+!.vscode/extensions.json
+.DS_Store
+.ruff_cache/
+.west
+*.local.json

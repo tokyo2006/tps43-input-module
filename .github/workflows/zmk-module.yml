@@ -1,0 +1,43 @@
+name: Test ZMK Module
+
+on:
+  push:
+    branches:
+      - "main"
+      - "feat/*"
+    paths-ignore:
+      - "**/*.md"
+      - .github/workflows/web-ui.yml
+      - .github/workflows/web-e2e.yml
+      - .gitignore
+      - "LICENSE"
+      - "web/**"
+  pull_request:
+    paths-ignore:
+      - "**/*.md"
+      - .github/workflows/web-ui.yml
+      - .github/workflows/web-e2e.yml
+      - .gitignore
+      - "LICENSE"
+      - "web/**"
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    container:
+      image: zmkfirmware/zmk-build-arm:stable
+    name: Build
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - uses: ./.github/actions/west-init
+      - name: Test
+        run: python3 -m unittest -v
+      - name: Upload Build Artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: zmk-firmware
+          path: |
+            build/*/zephyr/zmk.uf2

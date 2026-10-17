@@ -1,0 +1,4 @@
+# Nanopb options file for tps43.proto
+# Defines max sizes for string fields.
+
+tokyo2006.tps43.ErrorResponse.message   max_size:128

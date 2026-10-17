@@ -1,0 +1,19 @@
+# SPDX-License-Identifier: MIT
+
+menuconfig ZMK_TPS43
+	bool "Enable TPS43 (Azoteq IQS5xx) input module"
+	help
+	  Enable the tokyo2006/tps43-input-module: Azoteq IQS5xx trackpad driver
+	  and (optionally) the Studio RPC subsystem.
+
+if ZMK_TPS43
+
+config ZMK_TPS43_STUDIO_RPC
+	bool "Enable TPS43 Studio custom RPC subsystem"
+	depends on ZMK_STUDIO
+	help
+	  Register the tokyo2006__tps43 Studio RPC subsystem. Requires
+	  cormoran/zmk#main+dya (or newer with the custom RPC headers) on the
+	  ZMK side.
+
+endif # ZMK_TPS43

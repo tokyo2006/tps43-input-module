@@ -1,0 +1,5 @@
+description: Azoteq IQS5xx trackpad connected through I2C
+
+compatible: "azoteq,iqs5xx"
+
+include: ["i2c-device.yaml", "azoteq,iqs5xx-common.yaml"]

@@ -1,0 +1,4 @@
+# manifest to be imported by dependents (if dependency exists)
+manifest:
+  self:
+    import: west/west-dependency/west-dependency.yml

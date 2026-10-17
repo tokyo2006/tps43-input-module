@@ -1,0 +1,7 @@
+# test env manifest to setup dependencies under <west topdir>/dependencies
+manifest:
+  self:
+    path: west
+    import:
+      file: west-dependency
+      path-prefix: dependencies
